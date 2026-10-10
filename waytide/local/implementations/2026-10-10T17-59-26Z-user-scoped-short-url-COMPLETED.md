@@ -19,6 +19,7 @@ Shortened URLs are scoped to a user.
 
 - **Working location** — branch only, selected by Nicholas Henry on Sat Oct 10 2026 at 1:59:26 PM EDT.
 - **Level of participation** — unattended, selected by Nicholas Henry on Sat Oct 10 2026 at 1:59:26 PM EDT.
+- **Branch deletion** — the local branch deleted and origin/feature/user-scoped-short-url kept, confirmed by Nicholas Henry on Sat Oct 10 2026 at 2:07:16 PM EDT.
 
 ## Conclusion
 
@@ -28,3 +29,4 @@ Integrated into `develop` by pull request #2, squash-merged as `a627d69` at 2026
 
 Authored by Nicholas Henry on Sat Oct 10 2026 at 1:59:26 PM EDT
 Changed by Nicholas Henry on Sat Oct 10 2026 at 2:06:43 PM EDT
+Changed by Nicholas Henry on Sat Oct 10 2026 at 2:07:16 PM EDT
