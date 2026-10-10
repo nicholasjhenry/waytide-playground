@@ -3,7 +3,7 @@ defmodule ShortURLTest do
 
   alias WaytidePlayground.ShortURL
 
-  test "Expands to the original URL" do
+  test "expands to the original URL" do
     control_url = Controls.URL.example()
 
     {:ok, short_url} = ShortURL.shorten(control_url)
