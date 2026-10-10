@@ -7,6 +7,8 @@ defmodule WaytidePlayground.Application do
 
   @impl true
   def start(_type, _args) do
+    WaytidePlayground.ShortURL.create_table()
+
     children = [
       # Starts a worker by calling: WaytidePlayground.Worker.start_link(arg)
       # {WaytidePlayground.Worker, arg}
