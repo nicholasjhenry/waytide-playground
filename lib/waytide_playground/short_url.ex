@@ -1,10 +1,8 @@
 defmodule WaytidePlayground.ShortURL do
-  @base_url "https://wt.io/"
-  @table __MODULE__
+  alias WaytidePlayground.EventStore
+  alias WaytidePlayground.EventStore.{AppendCondition, Event, Query, QueryItem}
 
-  def create_table do
-    :ets.new(@table, [:named_table, :public, read_concurrency: true])
-  end
+  @base_url "https://wt.io/"
 
   def shorten(url) do
     code =
@@ -12,15 +10,27 @@ defmodule WaytidePlayground.ShortURL do
       |> Base.url_encode64(padding: false)
       |> binary_part(0, 6)
 
-    true = :ets.insert_new(@table, {code, url})
+    query = code_query(code)
+
+    event = %Event{
+      type: "url shortened",
+      data: %{code: code, url: url},
+      tags: ["short-url:" <> code]
+    }
+
+    :ok = EventStore.append([event], %AppendCondition{fail_if_events_match: query})
 
     {:ok, @base_url <> code}
   end
 
   def expand(@base_url <> code) do
-    case :ets.lookup(@table, code) do
-      [{^code, url}] -> {:ok, url}
+    case EventStore.read(code_query(code)) do
+      [sequenced_event] -> {:ok, sequenced_event.event.data.url}
       [] -> :error
     end
+  end
+
+  defp code_query(code) do
+    %Query{items: [%QueryItem{types: ["url shortened"], tags: ["short-url:" <> code]}]}
   end
 end
