@@ -51,8 +51,9 @@ A user has a subscription plan, free or pro. Free is the default, and the user c
 
 ## Outcome
 
-A user has a subscription plan: free by default, and pro after an upgrade. A second upgrade fails. The automated suite is verified: 8 passed (1 doctest, 7 tests). The commit is not made yet, because commit signing failed.
+A user has a subscription plan: free by default, and pro after an upgrade. A second upgrade fails. The automated suite is verified: 8 passed (1 doctest, 7 tests). Commit `61d2653` on `feature/subscription-plan`.
 
 ---
 
 Authored by Nicholas Henry on Sun Oct 11 2026 at 1:46:03 PM EDT
+Changed by Nicholas Henry on Sun Oct 11 2026 at 1:49:12 PM EDT
